@@ -25,6 +25,7 @@ for ( let i=9 ; i < 18 ; i++ ){
     else    {
         plannerTime.text((i - 12) + ":00 pm");
     }
+
     // adding the textarea 
     var textArea = $('<textarea>');
     textArea.text('');
@@ -39,20 +40,22 @@ for ( let i=9 ; i < 18 ; i++ ){
     else {
         textArea.addClass('present');
     } 
+
     // adding the save button
     var saveBtn = $('<button>');
     saveBtn.addClass('saveBtn');
     saveBtn.appendTo(plannerRow);
+    // font awesome save symbol
     var saveSymbol = $('<i>');
     saveSymbol.addClass('fas fa-save');
     saveSymbol.appendTo(saveBtn);
 
-    
-
-
-
 }
 // add save button listener w/ local storage
+saveBtn.on('click', function(){
+    
+});
+
 
 // on page load, pull data from local storage (if there is data in local storage)
 
