@@ -2,11 +2,11 @@
 var currentDay = moment().format("dddd, MMMM Do, YYYY");
 $("#currentDay").text(currentDay);
 
-// using moment to check the current time
+// using moment to check the current time (H = hour "1-24")
 var currentTime = moment().format('H');
 console.log(currentTime);
 
-// make for loop to create planner rows
+// loop to create planner rows + save stored information
 for ( let i=9 ; i < 18 ; i++ ){
     //declaring + appending container element + the planner's rows,
     var container = $('.container')
