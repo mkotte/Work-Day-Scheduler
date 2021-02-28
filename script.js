@@ -30,6 +30,7 @@ for ( let i=9 ; i < 18 ; i++ ){
     var textArea = $('<textarea>');
     textArea.text('');
     textArea.appendTo(plannerRow);
+    textArea.addClass('descriptionTxt');
     // sorting the textarea row's classes/colors by time of day
     if (currentTime > i){
         textArea.addClass('past');
@@ -45,17 +46,30 @@ for ( let i=9 ; i < 18 ; i++ ){
     var saveBtn = $('<button>');
     saveBtn.addClass('saveBtn');
     saveBtn.appendTo(plannerRow);
+    saveBtn.attr('data-hour', i)
+
     // font awesome save symbol
     var saveSymbol = $('<i>');
     saveSymbol.addClass('fas fa-save');
     saveSymbol.appendTo(saveBtn);
 
+    //save button listener setting local storage
+    saveBtn.on('click', function(){
+        let savedText = $(this).siblings('.descriptionTxt').val()
+        localStorage.setItem('hour-'+ i, savedText);
+    });
+
+  
+    // on page load, pull data from local storage (if there is data in local storage)
+      var textDisplay = [];
+    function renderPlanner(){
+        let plannerText = localStorage.getItem('hour-'+i);
+        console.log(plannerText);
+        if (plannerText !== null){
+        textDisplay[i] = plannerText;
+        textArea.text(textDisplay[i]);
+        }
+    };
+
+    renderPlanner();
 }
-// add save button listener w/ local storage
-saveBtn.on('click', function(){
-    
-});
-
-
-// on page load, pull data from local storage (if there is data in local storage)
-
